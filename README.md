@@ -20,17 +20,31 @@ pip install -r requirements.txt
 5. Create a config.py file
 ```bash
 # create a config.py file inside mysql-folder-monitor directory
+nano config.py
+
 # add this line, change and fill accordingly
 DIRECTORY_TO_WATCH = "/path/to/directory/to/watch"
 MYSQL_HOST = ""
 MYSQL_DATABASE = ""
 MYSQL_USER = ""
 MYSQL_PASS = ""
+
+# save and exit
+ctrl + s
+ctrl + x
 ```
+
+
 
 6. Run the program in Systemd background service (auto on when computer starts)
 ```bash
 # open mysql_folder_monitor.service and change <username>
+nano mysql_folder_monitor.service
+
+# save and exit
+ctrl + s
+ctrl + x
+
 # then follow these steps:
 sudo cp mysql-folder-monitor.service /etc/systemd/system/   # copy service file
 sudo systemctl daemon-reload                                # reload daemon
