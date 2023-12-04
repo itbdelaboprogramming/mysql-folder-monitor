@@ -50,4 +50,5 @@ sudo cp mysql-folder-monitor.service /etc/systemd/system/   # copy service file
 sudo systemctl daemon-reload                                # reload daemon
 sudo systemctl enable mysql-folder-monitor.service          # auto on
 sudo systemctl start mysql-folder-monitor.service           # start service
+sudo systemctl status mysql-folder-monitor.service          # check status, make sure it's active (running)
 ```
