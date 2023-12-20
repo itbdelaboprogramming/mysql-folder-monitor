@@ -43,7 +43,8 @@ def get_file_metadata(file_path, file_type):
     file_size = format_file_size(stats.st_size)  # File size with units
     created_time = format_time_to_jst(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(stats.st_ctime)))  # Creation time
     modified_time = format_time_to_jst(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(stats.st_mtime)))  # Modification time
-
+    created_time.replace('Z', '')
+    modified_time.replace('Z', '')
     author = ''
 
     return file_size, created_time, modified_time, author, file_type
