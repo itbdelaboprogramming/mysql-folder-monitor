@@ -28,12 +28,12 @@ def format_time_to_jst(local_time_string):
     # First, parse the local time string into a datetime object
     local_time = datetime.strptime(local_time_string, '%Y-%m-%d %H:%M:%S')
 
-    # Localize the datetime object to the local time zone (replace 'Asia/Jakarta' with your local time zone)
-    local_timezone = pytz.timezone('Asia/Jakarta')
+    # Localize the datetime object to the local time zone
+    local_timezone = pytz.timezone(LOCAL_TIMEZONE)
     local_dt_with_tz = local_timezone.localize(local_time, is_dst=None)
 
-    # Convert the time to JST
-    jst_timezone = pytz.timezone('Asia/Tokyo')
+    # Convert the time
+    jst_timezone = pytz.timezone(CONVERT_TIMEZONE)
     jst_dt = local_dt_with_tz.astimezone(jst_timezone)
 
     return jst_dt.strftime('%Y-%m-%d %H:%M:%S')

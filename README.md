@@ -28,7 +28,8 @@ MYSQL_HOST = ""
 MYSQL_DATABASE = ""
 MYSQL_USER = ""
 MYSQL_PASS = ""
-
+LOCAL_TIMEZONE = ""    # UTC or Asia/Jakarta or Asia/Tokyo            
+CONVERT_TIMEZONE = ""  # time to be converted (UTC or Asia/Jakarta or Asia/Tokyo)
 # save and exit
 ctrl + s
 ctrl + x
