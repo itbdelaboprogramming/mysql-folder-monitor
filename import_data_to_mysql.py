@@ -129,13 +129,17 @@ def insert_yaml_data_into_mysql(yaml_data, file_name):
                 connection.close()
 
 def insert_single_yaml_record(cursor, file_name, file_size, created_time, modified_time, author, file_type, yaml_data):
+    parsed_list = file_name.split('_')
+    user_id = 0
+    if parsed_list:
+        user_id = parsed_list[0]
     sql_query = """
         INSERT INTO yaml_data (
-            file_name, file_size, created_time, modified_time, author, file_type, data
-        ) VALUES (%s, %s, %s, %s, %s, %s, %s)
+            file_name, file_size, created_time, modified_time, author, file_type, data, user_id
+        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
     """
     cursor.execute(sql_query, (
-        file_name, file_size, created_time, modified_time, author, file_type, yaml_data
+        file_name, file_size, created_time, modified_time, author, file_type, yaml_data, user_id
     ))
 
 
@@ -170,14 +174,19 @@ def insert_pgm_data_into_mysql(pgm_data, file_name):
             # Get the next available ID
             next_id = get_next_id(cursor, "pgm_data")
 
+            parsed_list = file_name.split('_')
+            user_id = 0
+            if parsed_list:
+                user_id = parsed_list[0]
+
             # Prepare data for insertion
             sql_query = """
             INSERT INTO pgm_data (
-                id, map_name, file_size, created_time, modified_time, IP_Address, file_type, data
-            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                id, map_name, file_size, created_time, modified_time, IP_Address, file_type, data, user_id
+            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
             """
             cursor.execute(sql_query, (
-                next_id, file_name, file_size, created_time, modified_time, local_ip, file_type, pgm_data
+                next_id, file_name, file_size, created_time, modified_time, local_ip, file_type, pgm_data, user_id
             ))
 
             connection.commit()
